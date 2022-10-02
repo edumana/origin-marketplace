@@ -1,0 +1,48 @@
+</head>
+
+<body style="/*background: url(&quot;design.jpg&quot;);*/background-position: 0 -60px;">
+    <nav class="navbar navbar-light navbar-expand-md sticky-top navbar-shrink py-3" id="mainNav">
+        <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="/">
+            <span class="bs-icon-sm bs-icon-circle bs-icon-primary shadow d-flex justify-content-center align-items-center me-2 bs-icon" style="background: #048a81;">
+            <span style="color: rgb(255, 255, 255); text-align: center;"></span><i style="--fa-animation-iteration-count: 1; --fa-animation-duration: 600ms;" class="fas fa-coffee fa-beat"></i></span>
+            </span>
+            <span style="font-family: Mulish, sans-serif;font-weight: bold;">Origin Marketplace</span>
+        </a>
+        <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1">
+            <span class="visually-hidden">Toggle navigation</span>
+            <span class="navbar-toggler-icon"></span>
+        </button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contacts.html">Contacts</a></li>
+                </ul><div class="text-end d-flex align-items-center">
+                    <%# TODO: Add login logic here %>
+                    <% if (user) { %>
+                    <a href="/auth/logout">
+                        <button class="btn btn-warning">Logout</button>
+                    </a>
+                    <% } else { %>
+                    <div 
+                        id="g_id_onload"
+                        data-client_id="<%= googleClientID %>"
+                        data-login_uri="<%= googleLoginURL %>"
+                        data-auto_prompt="false"></div>
+                    <div 
+                        class="g_id_signin"
+                        data-type="standard"
+                        data-size="large"
+                        data-theme="outline"
+                        data-text="sign_in_with"
+                        data-shape="rectangular"
+                        data-logo_alignment="left"
+                    ></div>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </nav>

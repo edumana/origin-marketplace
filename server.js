@@ -37,6 +37,7 @@ app.use(
     path.join(path.dirname(fileURLToPath(import.meta.url)), 'public')
   )
 )
+
 app.use(
   session({
     secret: process.env.SESSION_SECRET,

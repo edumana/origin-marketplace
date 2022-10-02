@@ -4,14 +4,14 @@ import passport from 'passport'
 const router = Router()
 
 router.post("/google", passport.authenticate("google-one-tap", {
-  failureRedirect: "/suppliers",
-  successRedirect: "/suppliers",
+  failureRedirect: "/",
+  successRedirect: "/",
 }))
 
 router.get('/logout', function (req, res, next) {
   req.logout(function(err) {
     if (err) return next(err)
-    res.redirect('/suppliers')
+    res.redirect('/')
   })
 })
 
