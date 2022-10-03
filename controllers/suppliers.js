@@ -1,49 +1,59 @@
 import { Supplier } from '../models/supplier.js'
+import { User } from '../models/user.js'
+
 
 function index(req, res) {
-  // Make the query object to use with Supplier.find based on
-  let modelQuery = req.query.name
-    ? { name: new RegExp(req.query.name, 'i') }
-    : {}
-  // Sorting by name
-  Supplier.find(modelQuery)
-  .sort("name")
-  .then(suppliers => {
-    // Passing profiles and name, for use in the EJS
-    res.render("suppliers/index", { 
-      suppliers, 
-      name: req.query.name,
+  User.findById(req.user.id)
+  .populate('supplier')
+  .then(user => {
+    console.log('user: ', user)
+    Supplier.findById(user.supplier.id)
+    .then(supplier => {
+      res.render('suppliers', {
+        supplier,
+      })
     })
   })
   .catch(err => {
-    if (err) return next(err)
+    console.log(err)
+    res.redirect('/')
   })
 }
 
-// function createFact(req, res) {
-//   // find the PROFILE
-//   Profile.findById(req.user.studentProfile._id)
-//   .then(profile => {
-//     profile.facts.push(req.body)
-//     profile.save()
-//     .then(() => {
-//       res.redirect('/profiles')
-//     })
-//     .catch(err => {
-//       console.log(err)
-//       res.redirect("/profiles")
-//     })
-//   })
-//   .catch(err => {
-//     console.log(err)
-//     res.redirect("/profiles")
-//   })
-// }
+function edit(req, res) {
+  User.findById(req.user.id)
+  .populate('supplier')
+  .then(user => {
+    Supplier.findById(user.supplier.id)
+    .then(supplier => {
+      res.render('suppliers/edit', {
+        supplier,
+      })
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/')
+  })
+}
 
-//function deleteFact(req, res) {}
+function update(req, res) {
+  User.findById(req.user.id)
+  .populate('supplier')
+  .then(user => {
+    Supplier.findByIdAndUpdate(user.supplier.id, req.body, { new: true })
+    .then(supplier => {
+      res.redirect(`/suppliers/`)
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/')
+  })
+}
 
 export {
   index,
-  //createFact,
-  //deleteFact,
+  edit,
+  update
 }

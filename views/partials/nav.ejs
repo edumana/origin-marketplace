@@ -15,7 +15,7 @@
         </button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav mx-auto">
-                    <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
                     <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
                     <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
@@ -23,9 +23,10 @@
                 </ul><div class="text-end d-flex align-items-center">
                     <%# TODO: Add login logic here %>
                     <% if (user) { %>
-                    <a href="/auth/logout">
-                        <button class="btn btn-warning">Logout</button>
-                    </a>
+                        <a id="account-button" class="btn btn-primary shadow" role="button" href="suppliers" style="--bs-primary: #048A81;--bs-primary-rgb: 4,138,129;background: #048a81;border-style: none;">Dashboard</a>
+                        <a href="/auth/logout">
+                            <button class="btn btn-warning">Logout</button>
+                        </a>
                     <% } else { %>
                     <div 
                         id="g_id_onload"

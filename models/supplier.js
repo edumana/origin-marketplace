@@ -40,20 +40,31 @@ const coffeeSchema = new Schema({
   timestamps: true
 })
 
+/*---------------------------- Supplier Schema  ----------------------------*/
+/*
+|
+|
+|    Supplier.
+|              
+|         
+|
+*/
+
 const supplierSchema = new Schema({
   name: {
     type: String,
     required: true
   },
+  avatar: String,
   companyName: {
     type: String,
-    required: true
+    required: false
   },
 
   story: String,
   profilePicture: String,
   certifications: String,
-  awards: String,
+  taxId: Number,
 
   country: {
     type: String,

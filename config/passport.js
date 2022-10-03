@@ -25,6 +25,7 @@ passport.use(
           const newUser = new User({
             email: profile.emails[0].value,
             googleId: profile.id,
+            avatar: profile.photos[0].value,
             supplier: newSupplier._id,
           })
 
@@ -61,7 +62,7 @@ passport.serializeUser(function (user, done) {
 
 passport.deserializeUser(function (id, done) {
   User.findById(id)
-  .populate('supplier', 'name')
+  .populate('supplier')
   .then(user => {
     done(null, user)
   })

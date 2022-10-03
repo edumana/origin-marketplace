@@ -1,3 +1,7 @@
 .navbar{
   min-height: 85px;
 }
+
+#account-button{
+  margin: 0 10px;
+}

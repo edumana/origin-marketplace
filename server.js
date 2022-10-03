@@ -11,7 +11,7 @@ import passport from 'passport'
 import { passDataToView } from './middleware/middleware.js'
 
 import { router as indexRouter } from './routes/index.js'
-import { router as supplierRouter } from './routes/suppliers.js'
+import { router as suppliersRouter } from './routes/suppliers.js'
 import { router as authRouter } from './routes/auth.js'
 
 // connect to the MongoDB with mongoose
@@ -56,7 +56,7 @@ app.use(passDataToView)
 
 // mount all routes with appropriate base paths
 app.use('/', indexRouter)
-app.use('/suppliers', supplierRouter)
+app.use('/suppliers', suppliersRouter)
 app.use('/auth', authRouter)
 
 // catch 404 and forward to error handler
