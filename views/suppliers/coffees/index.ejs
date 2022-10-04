@@ -32,7 +32,7 @@
                       </tr>
                   </thead>
                   <tbody>
-                    <% if (supplier.availableCoffees.name){ %> 
+                    
                     <% supplier.availableCoffees.forEach(coffee => { %> 
                       <tr>
                           <td><img class="rounded-circle me-2" width="30" height="30" src="avatars/avatar1.jpeg" />
@@ -42,7 +42,7 @@
                           <td><%= coffee.variety %></td>
 
                           <td>
-                            <%= coffee.harvest.toDateString() %>
+                            <%= coffee.harvest %>
                           </td>
 
                           <td><%= coffee.quantity %> lbs.</td>
@@ -56,7 +56,7 @@
                               </form></td>
                       </tr>
                     <% }) %> 
-                    <% } %> 
+                    
                   </tbody>
               </table>
           </div>   
