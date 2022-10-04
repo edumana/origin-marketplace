@@ -6,7 +6,10 @@ const router = Router()
 // GET /profiles
 router.get('/', isLoggedIn, suppliersCtrl.index)
 router.get('/edit', isLoggedIn, suppliersCtrl.edit)
+router.get('/coffees', isLoggedIn, suppliersCtrl.showCoffee)
+router.get('/coffees/new', isLoggedIn, suppliersCtrl.newCoffee)
 router.put('/', isLoggedIn, suppliersCtrl.update)
+router.put('/coffees', isLoggedIn, suppliersCtrl.updateCoffee)
 
 // POST /facts
 // We will already have access to the logged in profile on

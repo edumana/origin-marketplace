@@ -25,7 +25,7 @@
     --bs-gray-700: #6e707e;
     --bs-gray-800: #5a5c69;
     --bs-gray-900: #3a3b45;
-    --bs-primary: #4e73df;
+    --bs-primary: #3993dd;
     --bs-secondary: #858796;
     --bs-success: #1cc88a;
     --bs-info: #36b9cc;
@@ -33,7 +33,7 @@
     --bs-danger: #e74a3b;
     --bs-light: #f8f9fc;
     --bs-dark: #3a3b45;
-    --bs-primary-rgb: 78, 115, 223;
+    --bs-primary-rgb: 57, 147, 221;
     --bs-secondary-rgb: 133, 135, 150;
     --bs-success-rgb: 28, 200, 138;
     --bs-info-rgb: 54, 185, 204;
@@ -9911,7 +9911,8 @@ a:focus{
 #wrapper #content-wrapper{
     background-color:#f8f9fc;
     width:100%;
-    overflow-x:hidden
+    overflow-x:hidden;
+    height: 100vh;
 }
 #wrapper #content-wrapper #content{
     flex:1 0 auto
@@ -10453,7 +10454,7 @@ a:focus{
 }
 @media(min-width: 768px){
     .sidebar{
-        width:14rem !important
+        width:15vw !important
     }
     .sidebar .nav-item .collapse{
         position:relative;

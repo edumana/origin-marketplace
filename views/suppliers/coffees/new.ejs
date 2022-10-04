@@ -1,0 +1,205 @@
+<%- include('../../partials/dashboard-head') %>
+    <%- include('../../partials/dashboard-nav') %>
+        <h3 class="text-dark mb-4" id="text-profile">Add Coffee:</h3>
+        <div class="row mb-3">
+            <div class="col-lg-4">
+                <div class="card mb-3">
+                    <div class="card-body text-center shadow"><img class="rounded-circle mb-3 mt-4"
+                            src="dogs/image2.jpeg" width="160" height="160" />
+                        <div class="mb-3"><button class="btn btn-primary btn-sm" type="button">Change Photo</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="text-primary fw-bold m-0">Availability</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="card mb-3">
+                        <form action="/suppliers/coffees?_method=PUT" method="POST">
+                        <label class="form-label" for="available"><strong>Available for sale:</strong></label>
+                        <select class="form-select" name="available">
+                            <option value="Yes" <%=supplier.country=='Yes' ? 'selected' : '' %>>Yes</option>
+                            <option value="No" <%=supplier.country=='No' ? 'selected' : '' %>>No</option>
+                        </select>
+                        </div>
+                        <div class="card mb-3">
+                        <label class="form-label" for="quantity"><strong>Quantity Available:</strong></label>
+                        <input class="form-control" type="text" placeholder="Weight in lbs." name="quantity" <%
+                            if(supplier.companyName) {%>
+                        value="<%= supplier.companyName %> "
+                            />
+                            <%} %>
+                        </div>
+                        <div class="card mb-3">
+                                <label class="form-label" for="price"><strong>Price per pound:</strong></label>
+                                <input class="form-control" type="number" placeholder="USD per pound." name="price" <%
+                                    if(supplier.companyName) {%>
+                                value="<%= supplier.companyName %> "
+                                    />
+                                    <%} %>
+                        </div>
+                    </div>
+                </div>
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="text-primary fw-bold m-0">Origin Details</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="card mb-3">
+                        <label class="form-label" for="farm"><strong>Farm</strong></label>
+                        <select class="form-select" name="farm">
+                            <option value="-">-</option>
+                            <option value="Bolivia" <%=supplier.country=='Bolivia' ? 'selected' : '' %>>Bolivia</option>
+                            <option value="Brazil" <%=supplier.country=='Brazil' ? 'selected' : '' %>>Brazil</option>
+                            <option value="Colombia" <%=supplier.country=='Colombia' ? 'selected' : '' %>>Colombia
+                            </option>
+                            <option value="Costa Rica" <%=supplier.country=='Costa Rica' ? 'selected' : '' %>>Costa Rica
+                            </option>
+                            <option value="Ecuador" <%=supplier.country=='Ecuador' ? 'selected' : '' %>>Ecuador</option>
+                            <option value="El Salvador" <%=supplier.country=='El Salvador' ? 'selected' : '' %>>El
+                                Salvador</option>
+                            <option value="Guatemala" <%=supplier.country=='Guatemala' ? 'selected' : '' %>>Guatemala
+                            </option>
+                            <option value="Honduras" <%=supplier.country=='Honduras' ? 'selected' : '' %>>Honduras
+                            </option>
+                            <option value="Nicaragua" <%=supplier.country=='Nicaragua' ? 'selected' : '' %>>Nicaragua
+                            </option>
+                            <option value="Panama" <%=supplier.country=='Panama' ? 'selected' : '' %>>Panama</option>
+                            <option value="Peru" <%=supplier.country=='Bolivia' ? 'Peru' : '' %>>Peru</option>
+                            <option value="Mexico" <%=supplier.country=='Mexico' ? 'selected' : '' %>>Mexico</option>
+                        </select>
+                        </div>
+                        <div class="card mb-3">
+                        <label class="form-label" for="country"><strong>Country</strong></label>
+                        <select class="form-select" name="country">
+                            <option value="-">-</option>
+                            <option value="Bolivia" <%=supplier.country=='Bolivia' ? 'selected' : '' %>>Bolivia</option>
+                            <option value="Brazil" <%=supplier.country=='Brazil' ? 'selected' : '' %>>Brazil</option>
+                            <option value="Colombia" <%=supplier.country=='Colombia' ? 'selected' : '' %>>Colombia
+                            </option>
+                            <option value="Costa Rica" <%=supplier.country=='Costa Rica' ? 'selected' : '' %>>Costa Rica
+                            </option>
+                            <option value="Ecuador" <%=supplier.country=='Ecuador' ? 'selected' : '' %>>Ecuador</option>
+                            <option value="El Salvador" <%=supplier.country=='El Salvador' ? 'selected' : '' %>>El
+                                Salvador</option>
+                            <option value="Guatemala" <%=supplier.country=='Guatemala' ? 'selected' : '' %>>Guatemala
+                            </option>
+                            <option value="Honduras" <%=supplier.country=='Honduras' ? 'selected' : '' %>>Honduras
+                            </option>
+                            <option value="Nicaragua" <%=supplier.country=='Nicaragua' ? 'selected' : '' %>>Nicaragua
+                            </option>
+                            <option value="Panama" <%=supplier.country=='Panama' ? 'selected' : '' %>>Panama</option>
+                            <option value="Peru" <%=supplier.country=='Bolivia' ? 'Peru' : '' %>>Peru</option>
+                            <option value="Mexico" <%=supplier.country=='Mexico' ? 'selected' : '' %>>Mexico</option>
+
+                        </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="row">
+                    <div class="col">
+                        <div class="card shadow mb-3">
+                            <div class="card-header py-3">
+                                <p class="text-primary m-0 fw-bold">Coffee Information</p>
+                            </div>
+                            <div class="card-body">
+                               
+                                    <div class="row">
+                                        <div class="mb-3">
+                                            <label class="form-label" for="name"><strong>Name</strong></label>
+                                            <input class="form-control" type="text" placeholder="Name" name="name" <%
+                                                if(supplier.companyName) {%>
+                                            value="<%= supplier.companyName %> "
+                                                />
+                                                <%} %>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="notes"><strong>Notes</strong></label>
+                                        <input class="form-control" type="text" placeholder="Notes" name="notes" <%
+                                            if(supplier.companyName) {%>
+                                        value="<%= supplier.companyName %> " />
+                                            <%} %>
+                                    </div>
+                                    <div class="card mb-3">
+                        <label class="form-label" for="process"><strong>Process</strong></label>
+                        <select class="form-select" name="process">
+                            <option value="-">-</option>
+                            <option value="Bolivia" <%=supplier.country=='Bolivia' ? 'selected' : '' %>>Bolivia</option>
+                            <option value="Brazil" <%=supplier.country=='Brazil' ? 'selected' : '' %>>Brazil</option>
+                            <option value="Colombia" <%=supplier.country=='Colombia' ? 'selected' : '' %>>Colombia
+                            </option>
+                            <option value="Costa Rica" <%=supplier.country=='Costa Rica' ? 'selected' : '' %>>Costa Rica
+                            </option>
+                            <option value="Ecuador" <%=supplier.country=='Ecuador' ? 'selected' : '' %>>Ecuador</option>
+                            <option value="El Salvador" <%=supplier.country=='El Salvador' ? 'selected' : '' %>>El
+                                Salvador</option>
+                            <option value="Guatemala" <%=supplier.country=='Guatemala' ? 'selected' : '' %>>Guatemala
+                            </option>
+                            <option value="Honduras" <%=supplier.country=='Honduras' ? 'selected' : '' %>>Honduras
+                            </option>
+                            <option value="Nicaragua" <%=supplier.country=='Nicaragua' ? 'selected' : '' %>>Nicaragua
+                            </option>
+                            <option value="Panama" <%=supplier.country=='Panama' ? 'selected' : '' %>>Panama</option>
+                            <option value="Peru" <%=supplier.country=='Bolivia' ? 'Peru' : '' %>>Peru</option>
+                            <option value="Mexico" <%=supplier.country=='Mexico' ? 'selected' : '' %>>Mexico</option>
+                        </select>
+                        </div>
+                        <div class="card mb-3">
+                        <label class="form-label" for="variety"><strong>Variety</strong></label>
+                        <select class="form-select" name="variety">
+                            <option value="-">-</option>
+                            <option value="Bolivia" <%=supplier.country=='Bolivia' ? 'selected' : '' %>>Bolivia</option>
+                            <option value="Brazil" <%=supplier.country=='Brazil' ? 'selected' : '' %>>Brazil</option>
+                            <option value="Colombia" <%=supplier.country=='Colombia' ? 'selected' : '' %>>Colombia
+                            </option>
+                            <option value="Costa Rica" <%=supplier.country=='Costa Rica' ? 'selected' : '' %>>Costa Rica
+                            </option>
+                            <option value="Ecuador" <%=supplier.country=='Ecuador' ? 'selected' : '' %>>Ecuador</option>
+                            <option value="El Salvador" <%=supplier.country=='El Salvador' ? 'selected' : '' %>>El
+                                Salvador</option>
+                            <option value="Guatemala" <%=supplier.country=='Guatemala' ? 'selected' : '' %>>Guatemala
+                            </option>
+                            <option value="Honduras" <%=supplier.country=='Honduras' ? 'selected' : '' %>>Honduras
+                            </option>
+                            <option value="Nicaragua" <%=supplier.country=='Nicaragua' ? 'selected' : '' %>>Nicaragua
+                            </option>
+                            <option value="Panama" <%=supplier.country=='Panama' ? 'selected' : '' %>>Panama</option>
+                            <option value="Peru" <%=supplier.country=='Bolivia' ? 'Peru' : '' %>>Peru</option>
+                            <option value="Mexico" <%=supplier.country=='Mexico' ? 'selected' : '' %>>Mexico</option>
+                        </select>
+                        </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="mb-3">
+                                                <label class="form-label" for="harvest">
+                                                    <strong>Harvest Date</strong></label>
+                                                <input class="form-control" type="date"
+                                                    name="harvest" <%
+                                                    if(supplier.companyName) {%>
+                                                value="<%= supplier.companyName %> " />
+                                                    <%} %>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="mb-3"><label class="form-label" for="altitude"><strong>Altitude (meters)</strong></label><input 
+                                                    class="form-control" type="number" placeholder="Altitude in meters"
+                                                    name="altitude"></div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <button class="btn btn-primary btn-sm" type="submit">Save Settings
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%- include('../../partials/dashboard-footer') %>

@@ -27,38 +27,7 @@
                 </div>
             </div>
             <div class="col-lg-8">
-                <div class="row mb-3 d-none">
-                    <div class="col">
-                        <div class="card text-white bg-primary shadow">
-                            <div class="card-body">
-                                <div class="row mb-2">
-                                    <div class="col">
-                                        <p class="m-0">Peformance</p>
-                                        <p class="m-0"><strong>65.2%</strong></p>
-                                    </div>
-                                    <div class="col-auto"><i class="fas fa-rocket fa-2x"></i></div>
-                                </div>
-                                <p class="text-white-50 small m-0"><i class="fas fa-arrow-up"></i> 5% since last month
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card text-white bg-success shadow">
-                            <div class="card-body">
-                                <div class="row mb-2">
-                                    <div class="col">
-                                        <p class="m-0">Peformance</p>
-                                        <p class="m-0"><strong>65.2%</strong></p>
-                                    </div>
-                                    <div class="col-auto"><i class="fas fa-rocket fa-2x"></i></div>
-                                </div>
-                                <p class="text-white-50 small m-0"><i class="fas fa-arrow-up"></i> 5% since last month
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            
                 <div class="row">
                     <div class="col">
                         <div class="card shadow mb-3">
@@ -66,7 +35,7 @@
                                 <p class="text-primary m-0 fw-bold">Supplier Information</p>
                             </div>
                             <div class="card-body">
-                                <form id="update-supplier" action="/suppliers/?_method=PUT" method="POST">
+                                <form action="/suppliers/?_method=PUT" method="POST">
                                     <div class="row">
                                         <div class="col">
                                             <div class="mb-3">
@@ -75,7 +44,7 @@
                                                 <input id="companyName" class="form-control" type="text"
                                                     placeholder="Company Name" name="companyName" 
                                                     <% if(supplier.companyName) {%>
-                                                    value="<%= supplier.companyName %> " />
+                                                    value="<%= supplier.companyName %>" />
                                                     <%} %>
                                             </div>
                                         </div>
@@ -91,8 +60,7 @@
                                             <div class="mb-3">
                                                 <label class="form-label"
                                                     for="first_name"><strong>Country</strong></label>
-
-                                                <select class="form-select" name="country" id="country-selector">
+                                                <select class="form-select" name="country">
                                                     <option value="-">-</option>
                                                     <option value="Bolivia" <%= supplier.country == 'Bolivia' ? 'selected' : ''%>>Bolivia</option>
                                                     <option value="Brazil" <%= supplier.country == 'Brazil' ? 'selected' : ''%>>Brazil</option>
@@ -104,7 +72,7 @@
                                                     <option value="Honduras" <%= supplier.country == 'Honduras' ? 'selected' : ''%>>Honduras</option>
                                                     <option value="Nicaragua" <%= supplier.country == 'Nicaragua' ? 'selected' : ''%>>Nicaragua</option>
                                                     <option value="Panama" <%= supplier.country == 'Panama' ? 'selected' : ''%>>Panama</option>
-                                                    <option value="Peru" <%= supplier.country == 'Bolivia' ? 'Peru' : ''%>>Peru</option>
+                                                    <option value="Peru" <%= supplier.country == 'Peru' ? 'selected' : ''%>>Peru</option>
                                                     <option value="Mexico" <%= supplier.country == 'Mexico' ? 'selected' : ''%>>Mexico</option>
                                                     
                                                 </select>
@@ -114,28 +82,21 @@
                                         <div class="col">
                                             <div class="mb-3"><label class="form-label" for="tax_id"><strong>Tax
                                                         Id</strong></label><input id="tax_id" class="form-control"
-                                                    type="number" placeholder="Tax ID" name="taxId" /></div>
+                                                    type="number" placeholder="Tax ID" name="taxId" value="<%- supplier.taxId %>"/>
+                                                </div>
+                                                
                                         </div>
+                                        <div class="mb-3"><label class="form-label" for="story"><strong>Story:</strong></label><textarea class="form-control"
+                                        type="text" placeholder="Your story" name="story"><%- supplier.story %> </textarea>
                                     </div>
-                                    <div class="mb-3"><button class="btn btn-primary btn-sm" type="submit">Save
-                                            Settings</button></div>
+                                        <div class="mb-3">
+                                            <button class="btn btn-primary btn-sm" type="submit">
+                                                Save Settings</button></div>
+                                    </div>
                                 </form>
                             </div>
                         </div>
-                        <div class="card shadow">
-                            <div class="card-header py-3">
-                                <p class="text-primary m-0 fw-bold">Story:</p>
-                            </div>
-                            <div class="card-body">
-                                <form>
-                                    <div class="mb-3"><label class="form-label" for="address"><textarea id="story"
-                                                class="form-control" type="text" name="story"
-                                                placeholder="Tell us your story..."></textarea></div>
-                                    <div class="mb-3"><button class="btn btn-primary btn-sm" type="submit">Save
-                                            Settings</button></div>
-                                </form>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
             </div>

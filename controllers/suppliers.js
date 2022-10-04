@@ -6,7 +6,6 @@ function index(req, res) {
   User.findById(req.user.id)
   .populate('supplier')
   .then(user => {
-    console.log('user: ', user)
     Supplier.findById(user.supplier.id)
     .then(supplier => {
       res.render('suppliers', {
@@ -52,8 +51,64 @@ function update(req, res) {
   })
 }
 
+function showCoffee(req, res){
+  User.findById(req.user.id)
+  .populate('supplier')
+  .then(user => {
+    Supplier.findById(user.supplier.id)
+    .then(supplier => {
+      res.render('suppliers/coffees', {
+        supplier,
+      })
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/')
+  })
+}
+
+function newCoffee(req, res){
+  User.findById(req.user.id)
+  .populate('supplier')
+  .then(user => {
+    Supplier.findById(user.supplier.id)
+    .then(supplier => {
+      res.render('suppliers/coffees/new', {
+        supplier,
+      })
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/')
+  })
+}
+
+function updateCoffee(req, res) {
+User.findById(req.user.id)
+  .populate('supplier')
+  .then(user => {
+    Supplier.findById(user.supplier._id)
+    .then(supplier => {
+      supplier.availableCoffees.push(req.body)
+      supplier.save()
+      .then(() => {
+        res.redirect(`/suppliers/coffees`)
+      })      
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/')
+  })
+}
+
 export {
   index,
   edit,
-  update
+  update,
+  showCoffee,
+  newCoffee,
+  updateCoffee,
 }

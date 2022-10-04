@@ -1,0 +1,51 @@
+<%- include('../../partials/dashboard-head') %>
+<%- include('../../partials/dashboard-nav') %>
+  <div class="card shadow">
+      <div class="card-header py-3">
+          <div class="row" style="
+          justify-content: center;
+          align-items: center;">
+            <div class="col-md-6 text-nowrap">
+              <p class="text-primary m-0 fw-bold" style="
+              font-size: 1.3rem;">Available Coffees</p>
+            </div>
+            <div class="col"><div id="add-coffee-button">
+              <a class="btn btn-primary shadow" role="button" href="/suppliers/coffees/new"
+              style="--bs-primary: #3993dd;--bs-primary-rgb: 4,138,129;background: #3993dd;border-style: none;">Add Coffee</a>
+            </div></div>
+        </div> 
+      </div>
+      <div class="card-body">
+        
+          
+        
+      </div>
+          <div id="dataTable" class="table-responsive table mt-2" role="grid" aria-describedby="dataTable_info">
+              <table id="dataTable" class="table my-0">
+                  <thead>
+                      <tr>
+                          <th>Name</th>
+                          <th>Farm</th>
+                          <th>Variety</th>
+                          <th>Harvest</th>
+                          <th>Quantity Available</th>
+                          <th>Active</th>                          
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr>
+                          <td><img class="rounded-circle me-2" width="30" height="30" src="avatars/avatar1.jpeg" />Airi Satou</td>
+                          <td>Accountant</td>
+                          <td>Tokyo</td>
+                          <td>33</td>
+                          <td>2008/11/28</td>
+                          <td>$162,700</td>
+                      </tr>
+                  </tbody>
+                  
+              </table>
+          </div>
+          
+  </div>
+  </div>
+<%- include('../../partials/dashboard-footer') %>
