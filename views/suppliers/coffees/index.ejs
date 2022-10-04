@@ -29,18 +29,20 @@
                           <th>Variety</th>
                           <th>Harvest</th>
                           <th>Quantity Available</th>
-                          <th>Active</th>                          
+                          <th>Price</th>                          
                       </tr>
                   </thead>
                   <tbody>
+                    <% supplier.availableCoffees.forEach(coffee => { %> 
                       <tr>
-                          <td><img class="rounded-circle me-2" width="30" height="30" src="avatars/avatar1.jpeg" />Airi Satou</td>
-                          <td>Accountant</td>
-                          <td>Tokyo</td>
-                          <td>33</td>
-                          <td>2008/11/28</td>
-                          <td>$162,700</td>
+                          <td><img class="rounded-circle me-2" width="30" height="30" src="avatars/avatar1.jpeg" /><%= coffee.name %></td>
+                          <td><%= coffee.farm %></td>
+                          <td><%= coffee.variety %></td>
+                          <td><%= coffee.harvest.toDateString() %></td>
+                          <td><%= coffee.quantity %> lbs.</td>
+                          <td>$<%= coffee.price %></td>
                       </tr>
+                    <% }) %> 
                   </tbody>
                   
               </table>
