@@ -16,7 +16,7 @@
                     </div>
                     <div class="card-body">
                         <div class="card mb-3">
-                        <form action="/suppliers/coffees?_method=PUT" method="POST">
+                        <form action="/suppliers/coffees" method="POST">
                         <label class="form-label" for="available"><strong>Available for sale:</strong></label>
                         <select class="form-select" name="available">
                             <option value="Yes" <%=supplier.country=='Yes' ? 'selected' : '' %>>Yes</option>
@@ -106,7 +106,6 @@
                                 <p class="text-primary m-0 fw-bold">Coffee Information</p>
                             </div>
                             <div class="card-body">
-                               
                                     <div class="row">
                                         <div class="mb-3">
                                             <label class="form-label" for="name"><strong>Name</strong></label>

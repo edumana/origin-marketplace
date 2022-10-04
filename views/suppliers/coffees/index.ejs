@@ -15,10 +15,7 @@
             </div></div>
         </div> 
       </div>
-      <div class="card-body">
-        
-          
-        
+      <div class="card-body"> 
       </div>
           <div id="dataTable" class="table-responsive table mt-2" role="grid" aria-describedby="dataTable_info">
               <table id="dataTable" class="table my-0">
@@ -29,25 +26,34 @@
                           <th>Variety</th>
                           <th>Harvest</th>
                           <th>Quantity Available</th>
-                          <th>Price</th>                          
+                          <th>Price</th>
+                          <th style="text-align:right; padding-right: 4%;">Edit</th>                        
+                          <th style="text-align:right; padding-right: 4%;">Delete</th>                        
                       </tr>
                   </thead>
                   <tbody>
                     <% supplier.availableCoffees.forEach(coffee => { %> 
                       <tr>
-                          <td><img class="rounded-circle me-2" width="30" height="30" src="avatars/avatar1.jpeg" /><%= coffee.name %></td>
+                          <td><img class="rounded-circle me-2" width="30" height="30" src="avatars/avatar1.jpeg" />
+                            <%= coffee.name %>
+                            </td>
                           <td><%= coffee.farm %></td>
                           <td><%= coffee.variety %></td>
                           <td><%= coffee.harvest.toDateString() %></td>
                           <td><%= coffee.quantity %> lbs.</td>
-                          <td>$<%= coffee.price %></td>
+                          <td>$<%= coffee.price %></td>    
+                          <td width="10%" style="text-align: right; padding-right: 4%">
+                            <a class="text-primary m-0 fw-bold" href="/suppliers/coffees/<%- coffee._id %>/edit">Edit</a></td>
+                          <td width="10%" style="text-align: right; padding-right: 4%">
+                            <form action="/suppliers/coffees/<%- coffee._id %>?_method=DELETE" method="POST">
+                              <button class="btn btn-primary btn-sm" type="submit" style="padding: 2px 10px 2px 10px;">Delete
+                              </button>
+                              </form></td>
                       </tr>
                     <% }) %> 
                   </tbody>
-                  
               </table>
-          </div>
-          
+          </div>   
   </div>
   </div>
 <%- include('../../partials/dashboard-footer') %>

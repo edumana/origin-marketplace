@@ -2,6 +2,8 @@ import mongoose from 'mongoose'
 
 const Schema = mongoose.Schema
 
+/*---------------------------- User Schema  ----------------------------*/
+
 const userSchema = new Schema({
   email: String,
   googleId: String,
