@@ -1,65 +1,77 @@
 <%- include('../../partials/dashboard-head') %>
-<%- include('../../partials/dashboard-nav') %>
-  <div class="card shadow">
+  <%- include('../../partials/dashboard-nav') %>
+    <div class="card shadow">
       <div class="card-header py-3">
-          <div class="row" style="
+        <div class="row" style="
           justify-content: center;
           align-items: center;">
-            <div class="col-md-6 text-nowrap">
-              <p class="text-primary m-0 fw-bold" style="
+          <div class="col-md-6 text-nowrap">
+            <p class="text-primary m-0 fw-bold" style="
               font-size: 1.3rem;">Available Coffees</p>
+          </div>
+          <div class="col">
+            <div id="add-coffee-button">
+
+              <a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="/suppliers/coffees/new">Add
+                Coffee <i class="fa-solid fa-plus"></i></a>
+
             </div>
-            <div class="col"><div id="add-coffee-button">
-              <a class="btn btn-primary shadow" role="button" href="/suppliers/coffees/new"
-              style="--bs-primary: #3993dd;--bs-primary-rgb: 4,138,129;background: #3993dd;border-style: none;">Add Coffee</a>
-            </div></div>
-        </div> 
+          </div>
+        </div>
       </div>
-      <div class="card-body"> 
+      <div class="card-body">
       </div>
-          <div id="dataTable" class="table-responsive table mt-2" role="grid" aria-describedby="dataTable_info">
-              <table id="dataTable" class="table my-0">
-                  <thead>
-                      <tr>
-                          <th>Name</th>
-                          <th>Farm</th>
-                          <th>Variety</th>
-                          <th>Harvest</th>
-                          <th>Quantity Available</th>
-                          <th>Price</th>
-                          <th style="text-align:right; padding-right: 4%;">Edit</th>                        
-                          <th style="text-align:right; padding-right: 4%;">Delete</th>                        
-                      </tr>
-                  </thead>
-                  <tbody>
-                    
-                    <% supplier.availableCoffees.forEach(coffee => { %> 
-                      <tr>
-                          <td><img class="rounded-circle me-2" width="30" height="30" src="avatars/avatar1.jpeg" />
-                            <%= coffee.name %>
-                            </td>
-                          <td><%= coffee.farm %></td>
-                          <td><%= coffee.variety %></td>
+      <div id="dataTable" class="table-responsive table mt-2" role="grid" aria-describedby="dataTable_info">
+        <table id="dataTable" class="table my-0">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Farm</th>
+              <th>Variety</th>
+              <th>Harvest</th>
+              <th>Quantity Available</th>
+              <th>Price</th>
+              <th style="text-align:right; padding-right: 4%; min-width: 45px;">Edit</th>
+              <th style="text-align:right; padding-right: 4%;">Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% supplier.availableCoffees.forEach(coffee=> { %>
+              <tr>
+                <td><img class="rounded-circle me-2" width="30" height="30" src="avatars/avatar1.jpeg" />
+                  <%= coffee.name %>
+                </td>
+                <td>
+                  <%= coffee.farm %>
+                </td>
+                <td>
+                  <%= coffee.variety %>
+                </td>
+                <td>
+                  <% if (coffee.harvest){ %> 
+                  <%- coffee.harvest.toLocaleString('default', { month: 'short' }) %> - <%- coffee.harvest.getFullYear() %>
+                  <% } %> 
 
-                          <td>
-                            <%= coffee.harvest %>
-                          </td>
-
-                          <td><%= coffee.quantity %> lbs.</td>
-                          <td>$<%= coffee.price %></td>    
-                          <td width="10%" style="text-align: right; padding-right: 4%">
-                            <a class="text-primary m-0 fw-bold" href="/suppliers/coffees/<%- coffee._id %>/edit">Edit</a></td>
-                          <td width="10%" style="text-align: right; padding-right: 4%">
-                            <form action="/suppliers/coffees/<%- coffee._id %>?_method=DELETE" method="POST">
-                              <button class="btn btn-primary btn-sm" type="submit" style="padding: 2px 10px 2px 10px;">Delete
-                              </button>
-                              </form></td>
-                      </tr>
-                    <% }) %> 
-                    
-                  </tbody>
-              </table>
-          </div>   
-  </div>
-  </div>
-<%- include('../../partials/dashboard-footer') %>
+                </td>
+                <td>
+                  <%= coffee.quantity %> lbs.
+                </td>
+                <td>$<%= coffee.price %>
+                </td>
+                <td width="10%" style="text-align: right; padding-right: 4%">
+                  <a class="text-primary m-0 fw-bold" href="/suppliers/coffees/<%- coffee._id %>/edit">Edit</a>
+                </td>
+                <td width="10%" style="text-align: right; padding-right: 4%">
+                  <form action="/suppliers/coffees/<%- coffee._id %>?_method=DELETE" method="POST">
+                    <button class="btn btn-primary btn-sm" type="submit" style="padding: 2px 10px 2px 10px;background-color: var(--bs-red); border: none;">Delete
+                    </button>
+                  </form>
+                </td>
+              </tr>
+              <% }) %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    </div>
+    <%- include('../../partials/dashboard-footer') %>

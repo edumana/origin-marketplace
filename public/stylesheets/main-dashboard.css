@@ -59,6 +59,12 @@
   margin-top: 0;
 }
 
+.add-farm-button{
+  margin: 10px;
+  display: flex;
+  justify-content: right;
+}
+
 .card {
   --bs-card-spacer-y: 1rem;
   --bs-card-spacer-x: 1rem;
@@ -91,4 +97,8 @@
 #add-coffee-button{
   text-align: right;
   margin: 1vh 2vw;
+}
+
+.delete-farms{
+  display: inline;
 }

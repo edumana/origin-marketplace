@@ -13,6 +13,8 @@ router.get('/coffees/:id/edit', isLoggedIn, suppliersCtrl.editCoffee)
 router.put('/', isLoggedIn, suppliersCtrl.update)
 router.put('/coffees', isLoggedIn, suppliersCtrl.updateCoffee)
 router.post('/coffees', isLoggedIn, suppliersCtrl.createCoffee)
+router.post('/farms/add', isLoggedIn, suppliersCtrl.addFarm)
+router.delete('/farms/:id', isLoggedIn, suppliersCtrl.deleteFarm)
 router.delete('/coffees/:id', isLoggedIn, suppliersCtrl.deleteCoffee)
 
 

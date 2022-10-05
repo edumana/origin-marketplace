@@ -16,29 +16,28 @@
                     </div>
                     <div class="card-body">
                         <div class="card mb-3">
-                        <form action="/suppliers/coffees?_method=PUT" method="POST">
-                        <label class="form-label" for="available"><strong>Available for sale:</strong></label>
-                        <select class="form-select" name="available">
-                            <option value="Yes" <%=coffee.available=='Yes' ? 'selected' : '' %>>Yes</option>
-                            <option value="No" <%=coffee.available=='No' ? 'selected' : '' %>>No</option>
-                        </select>
+                            <form action="/suppliers/coffees?_method=PUT" method="POST">
+                                <label class="form-label" for="available"><strong>Available for sale:</strong></label>
+                                <select class="form-select" name="available">
+                                    <option value="true" <%= coffee.available == 'true' ? 'selected' : '' %>>Yes</option>
+                                    <option value="false" <%= coffee.available == 'false' ? 'selected' : '' %>>No</option>
+                                </select>
                         </div>
                         <div class="card mb-3">
-                        <label class="form-label" for="quantity"><strong>Quantity Available:</strong></label>
-                        <input class="form-control" type="number" placeholder="Weight in lbs." name="quantity" 
-                        <% if(coffee.quantity) {%>
-                        value="<%= coffee.quantity %>"
-                        <% } %>
-                        />
-                        
+                            <label class="form-label" for="quantity"><strong>Quantity Available:</strong></label>
+                            <input class="form-control" type="number" placeholder="Weight in lbs." name="quantity" 
+                            <% if (coffee.quantity) {%>
+                                value="<%= coffee.quantity %>"
+                            <% } %>
+                            />
+
                         </div>
                         <div class="card mb-3">
-                                <label class="form-label" for="price"><strong>Price per pound:</strong></label>
-                                <input class="form-control" type="number" placeholder="USD per pound." name="price" 
-                                <% if(coffee.price) { %>
-                                value="<%= coffee.price %>"                      
-                                <% } %>
-                                />
+                            <label class="form-label" for="price"><strong>Price per pound:</strong></label>
+                            <input class="form-control" type="number" placeholder="USD per pound." name="price" <% if (coffee.price) { %>
+                                value="<%= coffee.price %>"
+                            <% } %>
+                            />
                         </div>
                     </div>
                 </div>
@@ -48,35 +47,46 @@
                     </div>
                     <div class="card-body">
                         <div class="card mb-3">
-                        <label class="form-label" for="farm"><strong>Farm</strong></label>
-                        <select class="form-select" name="farm">
-                            <option value="-">-</option>
-                            <option value="La Riviera" <%=coffee.farm=='La Riviera' ? 'selected' : '' %>>La Riviera</option>   
-                        </select>
+                            <label class="form-label" for="farm"><strong>Farm</strong></label>
+                            <select class="form-select" name="farm">
+                                <% if (supplier.farms.length > 0) { %> 
+                                    <% supplier.farms.forEach(farm =>{ %> 
+                                        <option value="<%- farm.name %>" <%=farm.name==coffee.farm ? 'selected' : '' %>><%- farm.name %></option>                                        
+                                    <% }) %> 
+                                <% } %>   
+                            </select>
                         </div>
                         <div class="card mb-3">
-                        <label class="form-label" for="country"><strong>Country</strong></label>
-                        <select class="form-select" name="country" disabled>
-                            <option value="-">-</option>
-                            <option value="Bolivia" <%=supplier.country=='Bolivia' ? 'selected' : '' %>>Bolivia</option>
-                            <option value="Brazil" <%=supplier.country=='Brazil' ? 'selected' : '' %>>Brazil</option>
-                            <option value="Colombia" <%=supplier.country=='Colombia' ? 'selected' : '' %>>Colombia
-                            </option>
-                            <option value="Costa Rica" <%=supplier.country=='Costa Rica' ? 'selected' : '' %>>Costa Rica
-                            </option>
-                            <option value="Ecuador" <%=supplier.country=='Ecuador' ? 'selected' : '' %>>Ecuador</option>
-                            <option value="El Salvador" <%=supplier.country=='El Salvador' ? 'selected' : '' %>>El
-                                Salvador</option>
-                            <option value="Guatemala" <%=supplier.country=='Guatemala' ? 'selected' : '' %>>Guatemala
-                            </option>
-                            <option value="Honduras" <%=supplier.country=='Honduras' ? 'selected' : '' %>>Honduras
-                            </option>
-                            <option value="Nicaragua" <%=supplier.country=='Nicaragua' ? 'selected' : '' %>>Nicaragua
-                            </option>
-                            <option value="Panama" <%=supplier.country=='Panama' ? 'selected' : '' %>>Panama</option>
-                            <option value="Peru" <%=supplier.country=='Peru' ? 'selected' : '' %>>Peru</option>
-                            <option value="Mexico" <%=supplier.country=='Mexico' ? 'selected' : '' %>>Mexico</option>
-                        </select>
+                            <label class="form-label" for="country"><strong>Country</strong></label>
+                            <select class="form-select" name="country" disabled>
+                                <option value="-">-</option>
+                                <option value="Bolivia" <%=supplier.country=='Bolivia' ? 'selected' : '' %>>Bolivia
+                                </option>
+                                <option value="Brazil" <%=supplier.country=='Brazil' ? 'selected' : '' %>>Brazil
+                                </option>
+                                <option value="Colombia" <%=supplier.country=='Colombia' ? 'selected' : '' %>>Colombia
+                                </option>
+                                <option value="Costa Rica" <%=supplier.country=='Costa Rica' ? 'selected' : '' %>>Costa
+                                    Rica
+                                </option>
+                                <option value="Ecuador" <%=supplier.country=='Ecuador' ? 'selected' : '' %>>Ecuador
+                                </option>
+                                <option value="El Salvador" <%=supplier.country=='El Salvador' ? 'selected' : '' %>>El
+                                    Salvador</option>
+                                <option value="Guatemala" <%=supplier.country=='Guatemala' ? 'selected' : '' %>
+                                    >Guatemala
+                                </option>
+                                <option value="Honduras" <%=supplier.country=='Honduras' ? 'selected' : '' %>>Honduras
+                                </option>
+                                <option value="Nicaragua" <%=supplier.country=='Nicaragua' ? 'selected' : '' %>
+                                    >Nicaragua
+                                </option>
+                                <option value="Panama" <%=supplier.country=='Panama' ? 'selected' : '' %>>Panama
+                                </option>
+                                <option value="Peru" <%=supplier.country=='Peru' ? 'selected' : '' %>>Peru</option>
+                                <option value="Mexico" <%=supplier.country=='Mexico' ? 'selected' : '' %>>Mexico
+                                </option>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -89,66 +99,75 @@
                                 <p class="text-primary m-0 fw-bold">Coffee Information</p>
                             </div>
                             <div class="card-body">
-                                    <div class="row">
-                                        <div class="mb-3">
-                                            <label class="form-label" for="name"><strong>Name</strong></label>
-                                            <input class="form-control" type="text" placeholder="Name" name="name" 
-                                            <% if(coffee.name) {%>
-                                            value="<%= coffee.name %>"
-                                            <% } %> 
-                                            />
-                                        </div>
-                                    </div>
+                                <div class="row">
                                     <div class="mb-3">
-                                        <label class="form-label" for="notes"><strong>Notes</strong></label>
-                                        <input class="form-control" type="text" placeholder="Notes" name="notes" 
-                                        <% if(coffee.notes) { %>
-                                        value="<%= coffee.notes %>" 
+                                        <label class="form-label" for="name"><strong>Name</strong></label>
+                                        <input class="form-control" type="text" placeholder="Name" name="name" 
+                                        <% if (coffee.name) { %>
+                                            value="<%= coffee.name %>"
                                         <% } %>
                                         />
                                     </div>
-                                    <div class="card mb-3">
-                        <label class="form-label" for="process"><strong>Process</strong></label>
-                        <select class="form-select" name="process">
-                            <option value="-">-</option>                       
-                        </select>
-                        </div>
-                        <div class="card mb-3">
-                        <label class="form-label" for="variety"><strong>Variety</strong></label>
-                        <select class="form-select" name="variety">
-                            <option value="-">-</option>
-                        </select>
-                        </div>
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="mb-3">
-                                                <label class="form-label" for="harvest">
-                                                    <strong>Harvest Date</strong></label>
-                                                <input class="form-control" type="date"
-                                                    name="harvest" 
-                                                    <% if(coffee.harvest) { %>
-                                                        value="<%= coffee.harvest.toISOString().slice(0, 10) %>"
-                                                    <% } %>
-                                                />
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="mb-3">
-                                                <label class="form-label" for="altitude">
-                                                    <strong>Altitude in m.</strong></label>
-                                                <input class="form-control" type="number"
-                                                    name="altitude" 
-                                                    <% if(coffee.altitude) { %>
-                                                value="<%= coffee.altitude %>" 
-                                                    <% } %>
-                                                />
-                                            </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label" for="notes"><strong>Notes</strong></label>
+                                    <input class="form-control" type="text" placeholder="Notes" name="notes" 
+                                    <% if (coffee.notes) { %>
+                                        value="<%= coffee.notes %>"
+                                    <% } %>
+                                    />
+                                </div>
+                                <div class="card mb-3">
+                                    <label class="form-label" for="process"><strong>Process</strong></label>
+                                    <select class="form-select" name="process">
+                                        <option value="Washed" <%=coffee.process=='Washed' ? 'selected' : '' %>>Washed</option>
+                                        <option value="Natural" <%=coffee.process=='Natural' ? 'selected' : '' %>>Natural</option>
+                                        <option value="Honey" <%=coffee.process=='Honey' ? 'selected' : '' %>>Honey</option>
+                                        <option value="Other" <%=coffee.process=='Other' ? 'selected' : '' %>>Other</option>
+                                    </select>
+                                </div>
+                                <div class="card mb-3">
+                                    <label class="form-label" for="variety"><strong>Variety</strong></label>
+                                    <select class="form-select" name="variety">
+                                        <option value="Blend" <%=coffee.variety=='Blend' ? 'selected' : '' %>>Blend</option>
+                                        <option value="Caturra" <%=coffee.variety=='Caturra' ? 'selected' : '' %>>Caturra</option>
+                                        <option value="Catuai" <%=coffee.variety=='Catuai' ? 'selected' : '' %>>Catuai</option>
+                                        <option value="Gesha" <%=coffee.variety=='Gesha' ? 'selected' : '' %>>Gesha</option>
+                                        <option value="Maragogype" <%=coffee.variety=='Maragogype' ? 'selected' : '' %>>Maragogype</option>
+                                        <option value="Bourbon" <%=coffee.variety=='Bourbon' ? 'selected' : '' %>>Bourbon</option>
+                                        <option value="Bourbon, Pink" <%=coffee.variety=='Bourbon, Pink' ? 'selected' : '' %>>Bourbon, Pink</option>
+                                        <option value="Exotic/Other" <%=coffee.variety=='Exotic/Other' ? 'selected' : '' %>>Exotic/Other</option>
+                                        
+                                    </select>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="mb-3">
+                                            <label class="form-label" for="harvest">
+                                                <strong>Harvest Date</strong></label>
+                                            <input class="form-control" type="date" name="harvest" 
+                                            <% if(coffee.harvest) { %>
+                                                value="<%= coffee.harvest.toISOString().slice(0, 10) %>"
+                                            <% } %>
+                                            />
                                         </div>
                                     </div>
-                                    <div class="mb-3">
-                                        <button class="btn btn-primary btn-sm" type="submit">Save Settings
-                                        </button>
+                                    <div class="col">
+                                        <div class="mb-3">
+                                            <label class="form-label" for="altitude">
+                                                <strong>Altitude in m.</strong></label>
+                                            <input class="form-control" type="number" name="altitude" 
+                                            <% if(coffee.altitude) { %>
+                                                value="<%= coffee.altitude %>"
+                                            <% } %>
+                                            />
+                                        </div>
                                     </div>
+                                </div>
+                                <div class="mb-3">
+                                    <button class="btn btn-primary btn-sm" type="submit">Save Settings
+                                    </button>
+                                </div>
                                 </form>
                             </div>
                         </div>

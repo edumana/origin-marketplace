@@ -19,24 +19,18 @@
                         <form action="/suppliers/coffees" method="POST">
                         <label class="form-label" for="available"><strong>Available for sale:</strong></label>
                         <select class="form-select" name="available">
-                            <option value="Yes" <%=supplier.country=='Yes' ? 'selected' : '' %>>Yes</option>
-                            <option value="No" <%=supplier.country=='No' ? 'selected' : '' %>>No</option>
+                            <option value="true">Yes</option>
+                            <option value="false">No</option>
                         </select>
                         </div>
                         <div class="card mb-3">
                         <label class="form-label" for="quantity"><strong>Quantity Available:</strong></label>
-                        <input class="form-control" type="text" placeholder="Weight in lbs." name="quantity" 
-                        
-                            />
-                            
+                        <input class="form-control" type="number" placeholder="Weight in lbs." name="quantity"/>                           
                         </div>
                         <div class="card mb-3">
                                 <label class="form-label" for="price"><strong>Price per pound:</strong></label>
-                                <input class="form-control" type="number" placeholder="USD per pound." name="price" <%
-                                    if(supplier.companyName) {%>
-                                value="<%= supplier.companyName %> "
-                                    />
-                                    <%} %>
+                                <input class="form-control" type="number" placeholder="USD per pound." name="price"/>
+                                    
                         </div>
                     </div>
                 </div>
@@ -48,30 +42,16 @@
                         <div class="card mb-3">
                         <label class="form-label" for="farm"><strong>Farm</strong></label>
                         <select class="form-select" name="farm">
-                            <option value="-">-</option>
-                            <option value="Bolivia" <%=supplier.country=='Bolivia' ? 'selected' : '' %>>Bolivia</option>
-                            <option value="Brazil" <%=supplier.country=='Brazil' ? 'selected' : '' %>>Brazil</option>
-                            <option value="Colombia" <%=supplier.country=='Colombia' ? 'selected' : '' %>>Colombia
-                            </option>
-                            <option value="Costa Rica" <%=supplier.country=='Costa Rica' ? 'selected' : '' %>>Costa Rica
-                            </option>
-                            <option value="Ecuador" <%=supplier.country=='Ecuador' ? 'selected' : '' %>>Ecuador</option>
-                            <option value="El Salvador" <%=supplier.country=='El Salvador' ? 'selected' : '' %>>El
-                                Salvador</option>
-                            <option value="Guatemala" <%=supplier.country=='Guatemala' ? 'selected' : '' %>>Guatemala
-                            </option>
-                            <option value="Honduras" <%=supplier.country=='Honduras' ? 'selected' : '' %>>Honduras
-                            </option>
-                            <option value="Nicaragua" <%=supplier.country=='Nicaragua' ? 'selected' : '' %>>Nicaragua
-                            </option>
-                            <option value="Panama" <%=supplier.country=='Panama' ? 'selected' : '' %>>Panama</option>
-                            <option value="Peru" <%=supplier.country=='Bolivia' ? 'Peru' : '' %>>Peru</option>
-                            <option value="Mexico" <%=supplier.country=='Mexico' ? 'selected' : '' %>>Mexico</option>
+                            <% if (supplier.farms.length > 0) { %> 
+                                <% supplier.farms.forEach(farm =>{ %> 
+                                    <option value="<%- farm.name %>"><%- farm.name %></option>                                        
+                                <% }) %> 
+                            <% } %>            
                         </select>
                         </div>
                         <div class="card mb-3">
                         <label class="form-label" for="country"><strong>Country</strong></label>
-                        <select class="form-select" name="country">
+                        <select class="form-select" name="country" disabled>
                             <option value="-">-</option>
                             <option value="Bolivia" <%=supplier.country=='Bolivia' ? 'selected' : '' %>>Bolivia</option>
                             <option value="Brazil" <%=supplier.country=='Brazil' ? 'selected' : '' %>>Brazil</option>
@@ -123,49 +103,23 @@
                                     <div class="card mb-3">
                         <label class="form-label" for="process"><strong>Process</strong></label>
                         <select class="form-select" name="process">
-                            <option value="-">-</option>
-                            <option value="Bolivia" <%=supplier.country=='Bolivia' ? 'selected' : '' %>>Bolivia</option>
-                            <option value="Brazil" <%=supplier.country=='Brazil' ? 'selected' : '' %>>Brazil</option>
-                            <option value="Colombia" <%=supplier.country=='Colombia' ? 'selected' : '' %>>Colombia
-                            </option>
-                            <option value="Costa Rica" <%=supplier.country=='Costa Rica' ? 'selected' : '' %>>Costa Rica
-                            </option>
-                            <option value="Ecuador" <%=supplier.country=='Ecuador' ? 'selected' : '' %>>Ecuador</option>
-                            <option value="El Salvador" <%=supplier.country=='El Salvador' ? 'selected' : '' %>>El
-                                Salvador</option>
-                            <option value="Guatemala" <%=supplier.country=='Guatemala' ? 'selected' : '' %>>Guatemala
-                            </option>
-                            <option value="Honduras" <%=supplier.country=='Honduras' ? 'selected' : '' %>>Honduras
-                            </option>
-                            <option value="Nicaragua" <%=supplier.country=='Nicaragua' ? 'selected' : '' %>>Nicaragua
-                            </option>
-                            <option value="Panama" <%=supplier.country=='Panama' ? 'selected' : '' %>>Panama</option>
-                            <option value="Peru" <%=supplier.country=='Bolivia' ? 'Peru' : '' %>>Peru</option>
-                            <option value="Mexico" <%=supplier.country=='Mexico' ? 'selected' : '' %>>Mexico</option>
+                            <option value="Washed">Washed</option>
+                            <option value="Natural">Natural</option>
+                            <option value="Honey">Honey</option>
+                            <option value="Other">Other</option>
                         </select>
                         </div>
                         <div class="card mb-3">
                         <label class="form-label" for="variety"><strong>Variety</strong></label>
                         <select class="form-select" name="variety">
-                            <option value="-">-</option>
-                            <option value="Bolivia" <%=supplier.country=='Bolivia' ? 'selected' : '' %>>Bolivia</option>
-                            <option value="Brazil" <%=supplier.country=='Brazil' ? 'selected' : '' %>>Brazil</option>
-                            <option value="Colombia" <%=supplier.country=='Colombia' ? 'selected' : '' %>>Colombia
-                            </option>
-                            <option value="Costa Rica" <%=supplier.country=='Costa Rica' ? 'selected' : '' %>>Costa Rica
-                            </option>
-                            <option value="Ecuador" <%=supplier.country=='Ecuador' ? 'selected' : '' %>>Ecuador</option>
-                            <option value="El Salvador" <%=supplier.country=='El Salvador' ? 'selected' : '' %>>El
-                                Salvador</option>
-                            <option value="Guatemala" <%=supplier.country=='Guatemala' ? 'selected' : '' %>>Guatemala
-                            </option>
-                            <option value="Honduras" <%=supplier.country=='Honduras' ? 'selected' : '' %>>Honduras
-                            </option>
-                            <option value="Nicaragua" <%=supplier.country=='Nicaragua' ? 'selected' : '' %>>Nicaragua
-                            </option>
-                            <option value="Panama" <%=supplier.country=='Panama' ? 'selected' : '' %>>Panama</option>
-                            <option value="Peru" <%=supplier.country=='Bolivia' ? 'Peru' : '' %>>Peru</option>
-                            <option value="Mexico" <%=supplier.country=='Mexico' ? 'selected' : '' %>>Mexico</option>
+                            <option value="Blend">Blend</option>
+                            <option value="Caturra">Caturra</option>
+                            <option value="Catuai">Catuai</option>
+                            <option value="Gesha">Gesha</option>
+                            <option value="Maragogype">Maragogype</option>
+                            <option value="Bourbon">Bourbon</option>
+                            <option value="Bourbon, Pink">Bourbon, Pink</option>
+                            <option value="Exotic/Other">Exotic/Other</option>                      
                         </select>
                         </div>
                                     <div class="row">
@@ -175,8 +129,7 @@
                                                     <strong>Harvest Date</strong></label>
                                                 <input class="form-control" type="date"
                                                     name="harvest" 
-                                                 />
-                                                    
+                                                />    
                                             </div>
                                         </div>
                                         <div class="col">

@@ -8,13 +8,15 @@ const coffeeSchema = new Schema({
     type: String,
   },
   available: {
-    type: String,
+    type: Boolean,
   },
   quantity: {
     type: Number,
+    min: 1,
   },
   price: {
     type: Number,
+    min: 0.1,
   },
   farm: {
     type: String,
@@ -22,14 +24,22 @@ const coffeeSchema = new Schema({
   harvest: {
     type: Date,
   },
-  variety: String,
+  variety: {
+    type: String,
+    enum: ['Caturra', 'Catuai', 'Gesha', 'Maragogype', 'Bourbon', 'Bourbon, Pink', 'Exotic/Other', 'Blend']    
+  },
   notes: String,
   country: {
     type: String,
+    enum: ["Mexico", "Guatemala", "El Salvador", "Nicaragua", "Honduras", "Costa Rica", "Panama", "Colombia", "Brazil", "Ecuador", "Peru", "Bolivia"]
   },
-  process: String,
+  process: {
+    type: String,
+    enum: ['Washed', 'Natural', 'Honey', 'Other'] 
+  },
   altitude: {
     type: Number,
+    min: 0,
   },
 }, {
   timestamps: true

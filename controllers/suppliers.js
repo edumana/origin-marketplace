@@ -151,7 +151,6 @@ function updateCoffee(req, res) {
 }
 
 function deleteCoffee(req, res) {
-  console.log('Holi')
   User.findById(req.user.id)
   .populate('supplier')
   .then(user => {
@@ -170,6 +169,40 @@ function deleteCoffee(req, res) {
   })
 }
 
+function addFarm(req, res) {
+  User.findById(req.user.id)
+  .populate('supplier')
+  .then(user => {
+    Supplier.findById(user.supplier._id)
+    .then(supplier => {
+      supplier.farms.push(req.body)
+      supplier.save()
+      .then(() => {
+        res.redirect(`/suppliers/edit`)
+      })          
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/')
+  })
+}
+
+function deleteFarm(req, res) {
+  User.findById(req.user.id)
+  .populate('supplier')
+  .then(user => {
+    Supplier.findByIdAndUpdate(user.supplier._id, {
+      $pull: { farms: { _id: req.params.id } },
+      new: true , useFindAndModify: false})
+      .catch(err => {
+        console.log(err)
+        res.redirect('/suppliers/edit')
+      })
+      res.redirect('/suppliers/edit')
+  })
+}
+
 export {
   index,
   edit,
@@ -180,4 +213,6 @@ export {
   editCoffee,
   updateCoffee,
   deleteCoffee,
+  addFarm,
+  deleteFarm,
 }
