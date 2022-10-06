@@ -95,11 +95,15 @@ function createCoffee(req, res) {
     .then(supplier => {
       Coffee.create(req.body)
       .then(coffee => {
-        supplier.availableCoffees.push(coffee.id)
-        supplier.save()
+        coffee.supplier = supplier.id
+        coffee.save()
         .then(() => {
-          res.redirect(`/suppliers/coffees`)
-        })      
+          supplier.availableCoffees.push(coffee.id)
+          supplier.save()
+          .then(() => {
+            res.redirect(`/suppliers/coffees`)
+          })
+        })           
       })
     })
   })

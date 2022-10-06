@@ -31,12 +31,15 @@ const coffeeSchema = new Schema({
   notes: String,
   country: {
     type: String,
-    enum: ["Mexico", "Guatemala", "El Salvador", "Nicaragua", "Honduras", "Costa Rica", "Panama", "Colombia", "Brazil", "Ecuador", "Peru", "Bolivia"]
+    enum: ["Mexico", "Guatemala", "El Salvador", "Nicaragua", "Honduras", "Costa Rica", "Panama", "Colombia", "Brazil", "Ecuador", "Peru", "Bolivia", ""]
   },
   process: {
     type: String,
     enum: ['Washed', 'Natural', 'Honey', 'Other'] 
   },
+
+  supplier: {type: Schema.Types.ObjectId, ref: 'Supplier'},
+
   altitude: {
     type: Number,
     min: 0,

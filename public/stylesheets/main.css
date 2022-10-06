@@ -5,3 +5,24 @@
 #account-button{
   margin: 0 10px;
 }
+
+#main-splash{
+  min-height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: top;
+}
+
+#intro-title{
+  font-size: 3.5rem;
+  margin-bottom: 1vh;
+  margin-bottom: 4vh !important;
+}
+
+#intro-subtitle{
+  font-size: 1.5rem;
+}
+
+.coffee-col{
+  margin-right: 25px;
+}

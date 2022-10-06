@@ -102,3 +102,7 @@
 .delete-farms{
   display: inline;
 }
+
+#country-disabled{
+  color:#858796;
+}

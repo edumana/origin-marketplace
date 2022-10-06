@@ -49,31 +49,17 @@
                             <% } %>            
                         </select>
                         </div>
-                        <div class="card mb-3">
-                        <label class="form-label" for="country"><strong>Country</strong></label>
-                        <select class="form-select" name="country" disabled>
-                            <option value="-">-</option>
-                            <option value="Bolivia" <%=supplier.country=='Bolivia' ? 'selected' : '' %>>Bolivia</option>
-                            <option value="Brazil" <%=supplier.country=='Brazil' ? 'selected' : '' %>>Brazil</option>
-                            <option value="Colombia" <%=supplier.country=='Colombia' ? 'selected' : '' %>>Colombia
-                            </option>
-                            <option value="Costa Rica" <%=supplier.country=='Costa Rica' ? 'selected' : '' %>>Costa Rica
-                            </option>
-                            <option value="Ecuador" <%=supplier.country=='Ecuador' ? 'selected' : '' %>>Ecuador</option>
-                            <option value="El Salvador" <%=supplier.country=='El Salvador' ? 'selected' : '' %>>El
-                                Salvador</option>
-                            <option value="Guatemala" <%=supplier.country=='Guatemala' ? 'selected' : '' %>>Guatemala
-                            </option>
-                            <option value="Honduras" <%=supplier.country=='Honduras' ? 'selected' : '' %>>Honduras
-                            </option>
-                            <option value="Nicaragua" <%=supplier.country=='Nicaragua' ? 'selected' : '' %>>Nicaragua
-                            </option>
-                            <option value="Panama" <%=supplier.country=='Panama' ? 'selected' : '' %>>Panama</option>
-                            <option value="Peru" <%=supplier.country=='Bolivia' ? 'Peru' : '' %>>Peru</option>
-                            <option value="Mexico" <%=supplier.country=='Mexico' ? 'selected' : '' %>>Mexico</option>
 
-                        </select>
+
+                        <div class="card mb-3">
+                            <label class="form-label" for="country"><strong>Country</strong></label>
+                        <input class="form-control" id="country-disabled" type="text" name="country"
+                        <% if (supplier.country) { %> 
+                            value="<%- supplier.country %>"
+                        <% } %>                        
+                        readonly/>
                         </div>
+
                     </div>
                 </div>
             </div>

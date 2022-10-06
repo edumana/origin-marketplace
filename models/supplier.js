@@ -16,7 +16,7 @@ const supplierSchema = new Schema({
   },
   country: {
     type: String,
-    enum: ["Mexico", "Guatemala", "El Salvador", "Nicaragua", "Honduras", "Costa Rica", "Panama", "Colombia", "Brazil", "Ecuador", "Peru", "Bolivia"]
+    enum: ["Mexico", "Guatemala", "El Salvador", "Nicaragua", "Honduras", "Costa Rica", "Panama", "Colombia", "Brazil", "Ecuador", "Peru", "Bolivia", ""]
   },
   companyName: {
     type: String,

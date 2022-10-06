@@ -13,6 +13,7 @@ import { passDataToView } from './middleware/middleware.js'
 import { router as indexRouter } from './routes/index.js'
 import { router as suppliersRouter } from './routes/suppliers.js'
 import { router as authRouter } from './routes/auth.js'
+import {router as coffeeRouter} from './routes/coffee.js'
 
 // connect to the MongoDB with mongoose
 import './config/database.js'
@@ -57,6 +58,7 @@ app.use(passDataToView)
 // mount all routes with appropriate base paths
 app.use('/', indexRouter)
 app.use('/suppliers', suppliersRouter)
+app.use('/coffee', coffeeRouter)
 app.use('/auth', authRouter)
 
 // catch 404 and forward to error handler

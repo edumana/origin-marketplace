@@ -1,0 +1,57 @@
+<%- include('../partials/html-head') %>
+<%- include('../partials/nav') %>
+
+<main>
+    <div class="container py-4 py-xl-5">
+
+      <% coffees.forEach(coffee => { %> 
+        <div class="card shadow mb-4">
+          <div class="card-header py-3">
+              <h6 class="text-primary fw-bold m-0"><%- coffee[0].country %></h6>
+          </div>
+          <div class="row gy-4 row-cols-1 row-cols-sm-2 row-cols-lg-3" style="margin: 20px 0 50px 30px;">
+
+            <% coffee.forEach(element => { %> 
+              <div class="col">
+            <div class="coffee-col">
+              <div class="text-center d-flex flex-column justify-content-center align-items-center align-items-lg-start" style="text-align: center;">
+                  <h1 style="font-size: 22px;"><%- element.name %></h1>
+                  <p class="text-start"><%- element.notes %></p>
+                  <div class="row" style="padding-top: 4px;width: 100%;margin-right: 0;margin-left: 0;border-bottom-style: solid;">
+                      <div class="col d-lg-flex justify-content-lg-start" style="padding-right: 0;padding-left: 0;"><small>Variety:</small></div>
+                      <div class="col d-lg-flex justify-content-lg-end"><small><%- element.variety %></small></div>
+                  </div>
+                  <div class="row" style="padding-top: 4px;width: 100%;margin-right: 0; margin-right: 0; margin-left: 0;border-bottom-style: solid;">
+                    <div class="col d-lg-flex justify-content-lg-start" style="padding-right: 0;padding-left: 0;"><small>Process:</small></div>
+                    <div class="col d-lg-flex justify-content-lg-end"><small><%- element.process %></small></div>
+                </div>
+                <div class="row" style="padding-top: 4px;width: 100%; margin-right: 0;margin-left: 0;border-bottom-style: solid;">
+                  <div class="col d-lg-flex justify-content-lg-start" style="padding-right: 0;padding-left: 0;"><small>Harvest:</small></div>
+                  <div class="col d-lg-flex justify-content-lg-end"><small><%- element.harvest.toLocaleString('default', { month: 'short' }) %> - <%- element.harvest.getFullYear() %> %></small></div>
+              </div>
+                  <div class="d-flex" style="margin-top: 25px;">
+                      <div>
+                          <p class="fw-bold text-primary d-lg-flex justify-content-lg-start mb-0">Producer</p>
+                          <p class="fs-6 text-start text-muted mb-0">Price per pound: x</p>
+                      </div>
+                  </div>
+                  <div class="card border-0 shadow-none">
+                      <div class="card-body d-flex align-items-center p-0"></div>
+                  </div>
+              </div>
+            </div>
+              </div>
+            <% }) %> 
+        </div>
+       
+      </div>
+      <% }) %>
+    </div>
+</main>
+
+
+
+
+</div>
+
+<%- include("../partials/footer") %>
