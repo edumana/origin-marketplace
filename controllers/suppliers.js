@@ -120,7 +120,7 @@ function editCoffee(req, res){
     Supplier.findById(user.supplier._id)
     .populate('availableCoffees')
     .then(supplier => {
-      Coffee.findOne({_id: {$nin: req.params._id}})
+      Coffee.findById(req.params.id)
       .then(coffee => {
         res.render('suppliers/coffees/edit', {
           coffee,
@@ -142,7 +142,7 @@ function updateCoffee(req, res) {
     Supplier.findById(user.supplier._id)
     .populate('availableCoffees')
     .then(supplier => {
-      Coffee.findOneAndUpdate({_id: {$nin: req.params._id}}, req.body)
+      Coffee.findByIdAndUpdate(req.params.id, req.body)
       .then(coffee => {
         res.redirect('/suppliers/coffees')
       })

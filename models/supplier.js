@@ -2,8 +2,6 @@ import mongoose from 'mongoose'
 const Schema = mongoose.Schema
 
 /*---------------------------- Farm Schema  ----------------------------*/
-
-
 const farmSchema = new Schema({
   name: String,
 })

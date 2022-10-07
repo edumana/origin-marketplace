@@ -16,7 +16,7 @@
                     </div>
                     <div class="card-body">
                         <div class="card mb-3">
-                            <form action="/suppliers/coffees?_method=PUT" method="POST">
+                            <form action="/suppliers/coffees/<%= coffee._id %>?_method=PUT" method="POST">
                                 <label class="form-label" for="available"><strong>Available for sale:</strong></label>
                                 <select class="form-select" name="available">
                                     <option value="true" <%= coffee.available == 'true' ? 'selected' : '' %>>Yes</option>
@@ -49,20 +49,29 @@
                         <div class="card mb-3">
                             <label class="form-label" for="farm"><strong>Farm</strong></label>
                             <select class="form-select" name="farm">
-                                <% if (supplier.farms.length > 0) { %> 
-                                    <% supplier.farms.forEach(farm =>{ %> 
-                                        <option value="<%- farm.name %>" <%=farm.name==coffee.farm ? 'selected' : '' %>><%- farm.name %></option>                                        
-                                    <% }) %> 
-                                <% } %>   
+                                <option
+                                 
+                                <% if (supplier.farms.length == 1) { %> 
+                                    
+                                    value = "<%- supplier.farms[0].name %>"><%- supplier.farms[0].name %>
+                                <% } else { %> 
+                                    <% supplier.farms.forEach(farm => { %>
+                                        <% console.log('holi') %> 
+                                        value="<%- farm.name %>" <%= farm.name == coffee.farm ? 'selected' : '' %>><%- farm.name %>
+                                                                            
+                                    <% })}%> 
+
+                                </option>    
+
+                                    
+                                
                             </select>
                         </div>
 
                         <div class="card mb-3">
                             <label class="form-label" for="country"><strong>Country</strong></label>
-                        <input class="form-control" id="country-disabled" type="text" name="country"
-                        <% if (supplier.country) { %> 
-                            value="<%- supplier.country %>"
-                        <% } %>                        
+                        <input class="form-control" id="country-disabled" type="text" name="country" 
+                        value="<%- supplier.country %>"                                             
                         readonly/>
                         </div> 
                     </div>

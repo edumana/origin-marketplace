@@ -15,14 +15,24 @@ async function show(req, res) {
 
   const promises = countries.map(country =>
     Coffee.find({country:country._id}).limit(3)
-    )
+  )
 
-  Promise.all(promises).then((coffees) => {
+  Promise.all(promises).then(coffees => {
+    console.log(coffees)
     res.render('coffee', {
       coffees
     })
   })
   
+  // countries.forEach(element => {
+  //   Coffee.find({country: element._id}).limit(3)
+  //   .then(coffees => {
+  //     countriesCoffeeArray.push(coffees)
+  //   })
+  // })
+
+
+  // console.log(countriesCoffeeArray)  
 }
 
 export{
